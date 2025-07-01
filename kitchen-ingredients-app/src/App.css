@@ -1,0 +1,487 @@
+:root {
+  --bg: #f6f8fa;
+  --text: #23272f;
+  --card-bg: #f6f8fa;
+  --card-border: #e5e7eb;
+  --primary: #2da44e;
+  --primary-hover: #218838;
+  --tab-inactive: #7a8599;
+  --tab-active: #23272f;
+  --modal-bg: #fff;
+  --modal-border: #e5e7eb;
+  --modal-shadow: 0 8px 32px rgba(27,31,35,0.13);
+}
+
+.dark-mode {
+  --bg: #181a1b;           /* Stylish dark grey background */
+  --text: #f3f4f6;         /* Brighter text for better contrast */
+  --card-bg: #23272f;
+  --card-border: #343a40;
+  --primary: #4ade80;
+  --primary-hover: #22c55e;
+  --tab-inactive: #b5bac6;  /* Lighter for legibility */
+  --tab-active: #fff;
+  --modal-bg: #23272f;
+  --modal-border: #343a40;
+  --modal-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+
+body {
+  background: var(--bg) !important;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.app-container {
+  max-width: 950px;
+  margin: 40px auto;
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: 14px;
+  box-shadow: var(--modal-shadow);
+  padding: 36px 32px 32px 32px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  border-bottom: 1.5px solid var(--card-border);
+  background: transparent;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  border-radius: 0;
+  padding: 14px 34px 10px 34px;
+  font-weight: 600;
+  color: var(--tab-inactive);
+  font-size: 1.13em;
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s, background 0.2s;
+  margin-bottom: -1px;
+  outline: none;
+}
+.tab-btn.selected {
+  color: var(--tab-active);
+  border-bottom: 2.5px solid var(--primary);
+  background: var(--modal-bg);
+  z-index: 1;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.1em;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+h2, h3 {
+  font-weight: 600;
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6, label, .ingredient-name {
+  color: var(--text) !important;
+}
+
+.add-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.7em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(27,31,35,0.06);
+  margin-bottom: 16px;
+  transition: background 0.2s;
+}
+.add-btn:hover {
+  background: var(--primary-hover);
+}
+
+.storage-cards {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.storage-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(27,31,35,0.03);
+  padding: 18px 16px 14px 16px;
+  min-width: 160px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+}
+.storage-card:hover {
+  border-color: var(--primary);
+  background: #23272f0a;
+  box-shadow: 0 4px 16px rgba(45,164,78,0.08);
+}
+.storage-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.13em;
+  color: var(--tab-active);
+}
+.storage-card p {
+  margin: 0;
+  font-size: 0.97em;
+  color: var(--tab-inactive);
+}
+
+.ingredient-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.ingredient-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(27,31,35,0.04);
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+}
+.ingredient-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 6px 24px rgba(45,164,78,0.09);
+}
+
+.ingredient-image-top {
+  width: 100%;
+  height: 100px;
+  background: #eaecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ingredient-image-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ingredient-fields {
+  padding: 14px 12px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingredient-fields input[type="text"],
+.ingredient-fields input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 1em;
+  background: var(--modal-bg);
+  color: var(--text);
+  border-color: var(--card-border);
+}
+.ingredient-fields input[type="text"]:focus,
+.ingredient-fields input[type="number"]:focus {
+  border-color: var(--primary);
+}
+
+.ingredient-fields > div {
+  display: flex;
+  gap: 8px;
+}
+
+.ingredient-fields > div input[type="number"],
+.ingredient-fields > div input[type="text"] {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ingredient-name {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+  color: var(--text);
+  word-break: break-word;
+}
+.ingredient-qty {
+  color: var(--tab-inactive);
+  font-size: 0.98em;
+}
+
+.ingredient-edit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(27,31,35,0.07);
+}
+.ingredient-edit-btn svg {
+  pointer-events: none;
+}
+.ingredient-edit-btn:hover {
+  background: rgba(45,164,78,0.18);
+}
+
+.ingredient-add-card {
+  border: 2px dashed var(--primary);
+  background: var(--card-bg);
+  min-width: 190px;
+  min-height: 220px;
+  transition: border 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ingredient-add-card:hover {
+  border-color: var(--primary-hover);
+  background: #23272f0a;
+}
+
+.add-storage-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.storage-type-card-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.storage-type-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 18px 22px 14px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.08em;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(27,31,35,0.04);
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+  outline: none;
+  min-width: 90px;
+  min-height: 90px;
+  gap: 8px;
+}
+.storage-type-card .storage-type-icon {
+  font-size: 2em;
+  margin-bottom: 6px;
+  display: block;
+  text-align: center;
+}
+.storage-type-card.selected,
+.storage-type-card:focus {
+  border-color: var(--primary);
+  background: #e6f4ea;
+  color: var(--primary);
+  box-shadow: 0 4px 16px rgba(45,164,78,0.08);
+}
+.storage-type-card:hover:not(.selected) {
+  border-color: var(--primary-hover);
+  background: #f0fdf4;
+  color: var(--primary-hover);
+}
+
+input[type="text"], input[type="number"], select {
+  border: 1.5px solid var(--card-border);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 1em;
+  background: var(--modal-bg);
+  color: var(--text);
+  transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  transition: background 0.2s;
+  background: var(--primary);
+  color: #fff;
+}
+
+button:hover {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(27,31,35,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  border: 1.5px solid var(--modal-border);
+  border-radius: 14px;
+  box-shadow: var(--modal-shadow);
+  padding: 36px 28px 28px 28px;
+  min-width: 340px;
+  max-width: 95vw;
+  position: relative;
+  color: var(--text);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  color: var(--tab-inactive);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--tab-active);
+}
+
+/* Meal Recommendations section dark mode support */
+.meal-recommendations-container {
+  background: var(--modal-bg);         /* Use modal-bg for true dark mode compliance */
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(27,31,35,0.04);
+  padding: 28px 24px 24px 24px;
+  color: var(--text);
+  margin-bottom: 32px;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.meal-recommendations-container h2,
+.meal-recommendations-container h3 {
+  color: var(--text) !important;
+}
+
+.meal-card {
+  background: var(--modal-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(27,31,35,0.06);
+  padding: 18px 16px 14px 16px;
+  margin-bottom: 18px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.meal-card h4 {
+  color: var(--tab-active) !important;
+}
+
+.meal-card p,
+.meal-card ul,
+.meal-card li {
+  color: var(--tab-inactive);
+}
+
+.meal-card ul {
+  padding-left: 18px;
+}
+
+.meal-card li {
+  margin-bottom: 4px;
+}
+
+body.dark-mode .meal-recommendations-container,
+.dark-mode .meal-recommendations-container {
+  background: var(--modal-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--card-border) !important;
+}
+body.dark-mode .meal-card,
+.dark-mode .meal-card {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* Modern Add/Cancel button styles */
+.modern-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 1em;
+  font-weight: 600;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(45,164,78,0.07);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  width: 100%;
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+  outline: none;
+  display: block;
+}
+
+.modern-btn:hover,
+.modern-btn:focus {
+  background: var(--primary-hover);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(45,164,78,0.13);
+}
+
+.modern-btn.cancel {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  margin-left: 8px;
+  margin-top: 6px;
+}
+
+.modern-btn.cancel:hover,
+.modern-btn.cancel:focus {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary-hover);
+}
